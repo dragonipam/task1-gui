@@ -14,7 +14,64 @@ namespace task1_gui
 
         private void button1_Click(object sender, EventArgs e)
         {
-
+            var penny = int.Parse(this.txtPenny.Text);
+            MessageBox.Show(Logic.Ñalculation(penny));
+        }
+    }
+    public class Logic
+    {
+        public static string ÑompletionRuble(int ruble)
+        {
+            String endRuble = "";
+            if (ruble % 10 == 1)
+            {
+                endRuble = " ðóáëü ";
+            }
+            else if (ruble % 10 <= 4)
+            {
+                endRuble = " ðóáëÿ ";
+            }
+            else
+            {
+                endRuble = " ðóáëåé ";
+            }
+            return endRuble;
+        }
+        public static string ÑompletionPenny(int penny)
+        {
+            String endPenny = "";
+            if (penny % 10 == 1)
+            {
+                endPenny = " êîïåéêà";
+            }
+            else if (penny % 10 <= 4)
+            {
+                endPenny = " êîïåéêè";
+            }
+            else
+            {
+                endPenny = " êîïååê";
+            }
+            return endPenny;
+        }
+        public static string Ñalculation(int ruble)
+        {
+            string outMessage = "";
+            int penny = ruble % 100;
+            ruble /= 100;
+            if (penny == 0)
+            {
+                outMessage = ruble + ÑompletionRuble(ruble);
+            }
+            else if (ruble < 1)
+            {
+                outMessage = penny + ÑompletionPenny(penny);
+            }
+            else
+            {
+                outMessage = ruble + ÑompletionRuble(ruble) + penny + ÑompletionPenny(penny);
+            }
+            return outMessage;
         }
     }
 }
