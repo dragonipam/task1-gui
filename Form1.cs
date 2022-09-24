@@ -5,12 +5,14 @@ namespace task1_gui
         public Form1()
         {
             InitializeComponent();
+            txtPenny.Text = Properties.Settings.Default.penny.ToString();
         }
 
         private void label1_Click(object sender, EventArgs e)
         {
 
         }
+
 
 
         private void button1_Click(object sender, EventArgs e)
@@ -25,6 +27,8 @@ namespace task1_gui
                 MessageBox.Show("Некорректный ввод", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
+            Properties.Settings.Default.penny = penny;
+            Properties.Settings.Default.Save();
             MessageBox.Show(Logic.Сalculation(penny));
         }
     }
@@ -54,7 +58,7 @@ namespace task1_gui
             {
                 endPenny = " копейка";
             }
-            else if (penny % 10 <= 4)
+            else if (penny % 10 <= 4 && penny % 10>0)
             {
                 endPenny = " копейки";
             }
