@@ -13,8 +13,6 @@ namespace task1_gui
 
         }
 
-
-
         private void button1_Click(object sender, EventArgs e)
         {
             int penny;
@@ -30,6 +28,11 @@ namespace task1_gui
             Properties.Settings.Default.penny = penny;
             Properties.Settings.Default.Save();
             MessageBox.Show(Logic.Ñalculation(penny));
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
         }
     }
     public class Logic
