@@ -12,9 +12,19 @@ namespace task1_gui
 
         }
 
+
         private void button1_Click(object sender, EventArgs e)
         {
-            var penny = int.Parse(this.txtPenny.Text);
+            int penny;
+            try
+            {
+                penny = int.Parse(this.txtPenny.Text);
+            }
+            catch (FormatException)
+            {
+                MessageBox.Show("Некорректный ввод", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
             MessageBox.Show(Logic.Сalculation(penny));
         }
     }
